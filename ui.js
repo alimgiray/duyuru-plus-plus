@@ -20,10 +20,12 @@ function createInput() {
 
   var input = document.createElement('input');
   input.setAttribute("id", "hiddenUsersInput");
+  input.addEventListener("keydown", checkEnter);
   div.appendChild(input);
 
   var btn = document.createElement("button");
   btn.innerText = "+";
+  btn.setAttribute("id", "hiddenUsersAddButton");
   btn.addEventListener("click", addHiddenUser);
   div.appendChild(btn);
 
@@ -31,7 +33,7 @@ function createInput() {
 }
 
 function createList() {
-  // If created before, delete the list and than rerender
+  // If created before, delete the list and than re-render
   if(document.getElementById("hiddenUsersList")){
     document.getElementById("hiddenUsersList").remove();
   }
@@ -53,18 +55,19 @@ function createList() {
 
       var btn = document.createElement('button');
       btn.innerText = '-';
-      btn.addEventListener("click", function(){
-        removeHiddenUser(hiddenUser);
-    }, false);
+      btn.setAttribute("id", "hiddenUsersRemoveButton");
+      btn.addEventListener("click", function() { removeHiddenUser(hiddenUser) }, false);
       
       li.appendChild(btn);
       li.appendChild(span);
       
       ul.appendChild(li);
     });
-  });
 
-  document.getElementById("hiddenUsers").appendChild(div);
+    if (result.hiddenUsers.length > 0) {
+      document.getElementById("hiddenUsers").appendChild(div);
+    }
+  });
 }
 
 function createWidget() {

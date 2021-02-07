@@ -31,6 +31,13 @@ function addHiddenUser() {
   });
 }
 
+function checkEnter(e) {
+  if (e.key !== 'Enter') {
+    return;
+  }
+  addHiddenUser();
+}
+
 function removeHiddenUser(username) {
   chrome.storage.sync.get(['hiddenUsers'], function(result) {
     const hiddenUsers = result.hiddenUsers.filter(user => user !== username);
