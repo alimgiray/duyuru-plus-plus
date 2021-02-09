@@ -1,12 +1,12 @@
 
-function createContainer() {
+function createHiddenUsersContainer() {
   var div = document.createElement('div');
   div.setAttribute("id", "hiddenUsers");
   
   document.getElementsByClassName("sidebar")[0].appendChild(div);
 }
 
-function createHeader() {
+function createHiddenUsersHeader() {
   var div = document.createElement('div')
   div.setAttribute("id", "hiddenUsersHeader");
   div.innerText = "Engellenenler";
@@ -14,13 +14,13 @@ function createHeader() {
   document.getElementById("hiddenUsers").appendChild(div);
 }
 
-function createInput() {
+function createHiddenUsersInput() {
   var div = document.createElement('div')
   div.setAttribute("id", "hiddenUsersInputArea")
 
   var input = document.createElement('input');
   input.setAttribute("id", "hiddenUsersInput");
-  input.addEventListener("keydown", checkEnter);
+  input.addEventListener("keydown", checkEnterOnHideUser);
   div.appendChild(input);
 
   var btn = document.createElement("button");
@@ -32,8 +32,8 @@ function createInput() {
   document.getElementById("hiddenUsers").appendChild(div);
 }
 
-function createList() {
-  // If created before, delete the list and than re-render
+function createHiddenUsersList() {
+  // If created before, delete the list and re-render
   if(document.getElementById("hiddenUsersList")){
     document.getElementById("hiddenUsersList").remove();
   }
@@ -73,11 +73,11 @@ function createList() {
   });
 }
 
-function createWidget() {
-  createContainer();
-  createHeader();
-  createInput();
-  createList();
+function createHideUsersWidget() {
+  createHiddenUsersContainer();
+  createHiddenUsersHeader();
+  createHiddenUsersInput();
+  createHiddenUsersList();
 }
 
-createWidget();
+createHideUsersWidget();

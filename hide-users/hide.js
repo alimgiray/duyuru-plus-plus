@@ -31,13 +31,13 @@ function addHiddenUser() {
     if (!result.hiddenUsers.includes(userToHide)) {
       result.hiddenUsers.push(userToHide);
       chrome.storage.sync.set({"hiddenUsers": result.hiddenUsers}, function() {});
-      createList();
+      createHiddenUsersList();
     }
     document.getElementById("hiddenUsersInput").value = "";
   });
 }
 
-function checkEnter(e) {
+function checkEnterOnHideUser(e) {
   if (e.key !== 'Enter') {
     return;
   }
@@ -48,7 +48,7 @@ function removeHiddenUser(username) {
   chrome.storage.sync.get(['hiddenUsers'], function(result) {
     const hiddenUsers = result.hiddenUsers.filter(user => user !== username);
     chrome.storage.sync.set({"hiddenUsers": hiddenUsers}, function() {});
-    createList();
+    createHiddenUsersList();
   });
 }
 

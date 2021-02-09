@@ -8,8 +8,13 @@
         "https://www.eksiduyuru.com/**",
         "https://eksiduyuru.com/**"
       ],
-      "js": ["hide.js", "ui.js"],
-      "css" : ["style.css"]
+      "js": [
+        "hide-users/hide.js", 
+        "hide-users/ui.js"
+      ],
+      "css" : [
+        "hide-users/style.css"
+      ]
     }
   ],
   "permissions": ["storage"],
