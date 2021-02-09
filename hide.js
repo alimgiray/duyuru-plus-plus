@@ -1,6 +1,9 @@
 // Hides posts with given users on the page
 function hidePosts() {
   chrome.storage.sync.get(['hiddenUsers'], function(result) {
+    if (!result || !result.hiddenUsers) {
+      return;
+    }
     var posts = window.document.getElementsByClassName("entry0");
     for (var post of posts) {
       for (var i = 0; i < post.childNodes.length; i++) {
@@ -22,6 +25,9 @@ function hidePosts() {
 function addHiddenUser() {
   chrome.storage.sync.get(['hiddenUsers'], function(result) {
     var userToHide = document.getElementById("hiddenUsersInput").value;
+    if (!result || !result.hiddenUsers) {
+      result.hiddenUsers = []
+    }  
     if (!result.hiddenUsers.includes(userToHide)) {
       result.hiddenUsers.push(userToHide);
       chrome.storage.sync.set({"hiddenUsers": result.hiddenUsers}, function() {});

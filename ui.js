@@ -45,6 +45,9 @@ function createList() {
   div.appendChild(ul);
 
   chrome.storage.sync.get(['hiddenUsers'], function(result) {
+    if (!result || !result.hiddenUsers) {
+      return;
+    }
     result.hiddenUsers.forEach(hiddenUser => {
       
       var li = document.createElement('li');
